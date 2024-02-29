@@ -21,7 +21,7 @@
     <br>
 
     <label for="date">Event's date</label>
-    <input type="text" name="date" id="date">
+    <input type="date" name="date" id="date">
 
     <br>
 

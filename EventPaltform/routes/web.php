@@ -16,11 +16,9 @@ use App\Http\Controllers\Admin\EventController;
 |
 */
 
-Route::get('/', [EventController::class, 'index'])->name('users.index');
+Route::get('/', [EventController::class, 'index'])->name('event.index');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [EventController :: class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/events/{id}', [EventController::class, 'show'])->name('users.show');

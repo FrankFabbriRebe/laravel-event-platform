@@ -32,8 +32,9 @@ class EventController extends Controller
     {
 
         $tags = Tag::all();
+        $users = User::all();
 
-        return view('pages.create', compact("tags"));
+        return view('pages.create', compact("tags", "users"));
     }
 
     public function store(Request $request)

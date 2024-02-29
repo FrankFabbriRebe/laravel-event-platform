@@ -39,6 +39,22 @@
 
     <br>
 
+    @foreach ($users as $user)
+    <input
+        type="checkbox"
+        name="user_id[]"
+        id="{{ 'user_id_' . $user->id }}"
+        value="{{ $user->id }}"
+    >
+    <label
+        for="{{ 'user_id_' . $user->id  }}">
+        {{ $user->name }}
+    </label>
+    <br>
+    @endforeach
+
+    <br>
+
     <input type="submit" value="CREATE">
 
     </form>

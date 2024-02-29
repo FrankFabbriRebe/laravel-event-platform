@@ -30,8 +30,12 @@
 
     <br>
 
-    <label for="name">Event's name</label>
-    <input type="text" name="name" id="name">
+    <label for="tag_id">Event's tag</label>
+    <select name="tag_id" id="tag_id">
+    @foreach ($tags as $tag)
+    <option value="{{ $tag->id}}">{{ $tag->name }}</option>
+    @endforeach
+    </select>
 
     <br>
 

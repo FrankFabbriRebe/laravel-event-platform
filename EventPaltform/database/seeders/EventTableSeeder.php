@@ -18,7 +18,7 @@ class EventTableSeeder extends Seeder
   public function run()
   {
     Event::factory()
-      ->count(25)
+      ->count(100)
       ->create();
   }
 }

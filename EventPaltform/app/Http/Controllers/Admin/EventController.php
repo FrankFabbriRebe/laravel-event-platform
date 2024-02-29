@@ -29,7 +29,10 @@ class EventController extends Controller
 
     public function create()
     {
-        return view('pages.create');
+
+        $tags = Tag::all();
+
+        return view('pages.create', compact("tags"));
     }
 
 }

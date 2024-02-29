@@ -43,6 +43,7 @@ class EventController extends Controller
         $data = $request->all();
 
         $tag = Tag::find($data['tag_id']);
+        $user = User::find($data['user_id']);
 
         $newEvent = new Event();
 
@@ -50,6 +51,7 @@ class EventController extends Controller
         $newEvent->description = $data['description'];
         $newEvent->date = $data['date'];
         $newEvent->location = $data['location'];
+        $newEvent->user()->associate('$user');
 
         $newEvent->save();
 

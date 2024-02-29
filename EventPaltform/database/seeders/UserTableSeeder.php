@@ -19,14 +19,7 @@ class UserTableSeeder extends Seeder
     {
         User::factory()
             ->count(10)
-            ->make()
-            ->each(function ($user) {
-
-                $event = Event::inRandomOrder()->first();
-
-                $user->event()->associate($event);
-                $user->save();
-
-            });
+            ->create();
+            
     }
 }

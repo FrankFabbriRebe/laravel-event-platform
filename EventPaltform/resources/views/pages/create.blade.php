@@ -20,8 +20,8 @@
 
     <br>
 
-    <label for="date">Event's date</label>
-    <input type="date" name="date" id="date">
+    <label for="creation_date">Event's date</label>
+    <input type="date" name="creation_date" id="creation_date">
 
     <br>
 
@@ -33,7 +33,7 @@
     <label for="tag_id">Event's tag</label>
     <select name="tag_id" id="tag_id">
     @foreach ($tags as $tag)
-    <option value="{{ $tag->id}}">{{ $tag->name }}</option>
+    <option value="{{$tag->id}}">{{ $tag->name }}</option>
     @endforeach
     </select>
 
@@ -43,11 +43,11 @@
     <input
         type="checkbox"
         name="user_id[]"
-        id="{{ 'user_id_' . $user->id }}"
+        id="{{ 'user-' . $user->id }}"
         value="{{ $user->id }}"
     >
     <label
-        for="{{ 'user_id_' . $user->id  }}">
+        for="{{ 'user-' . $user->id  }}">
         {{ $user->name }}
     </label>
     <br>

@@ -5,10 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use SebastianBergmann\CodeCoverage\Report\Xml\Project;
+
 use App\Models\User;
 use App\Models\Tag;
 use App\Models\Event;
-use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 
 class EventController extends Controller
 {
@@ -39,25 +40,25 @@ class EventController extends Controller
 
     public function store(Request $request)
     {
-
+        
         $data = $request->all();
 
-        $tag = Tag::find($data['tag_id']);
-        $user = User::find($data['user_id']);
+        $users = User::find($data['user_id']);
 
-        $newEvent = new Event();
+        $event = new Event();
 
-        $newEvent->name = $data['name'];
-        $newEvent->description = $data['description'];
-        $newEvent->date = $data['date'];
-        $newEvent->location = $data['location'];
-        $newEvent->user()->associate('$user');
+        $event->name = $data['name'];
+        $event->description = $data['description'];
+        $event->creation_date = $data['creation_date'];
+        $event->location = $data['location'];
 
-        $newEvent->save();
+        $event->user()->associate($users);
+        
+        $event->save();
 
-        $newEvent->tags()->attach($data['tag_id']);
+        $event->tags()->attach($data['tag_id']);
 
-        return redirect()->route('users.index');
+        return redirect()->route('pages.show', $event -> id);
 
     }
 

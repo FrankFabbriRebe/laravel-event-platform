@@ -20,7 +20,7 @@ class EventFactory extends Factory
             
             'name' => fake() -> word(), 
             'description' => fake() -> paragraph(), 
-            'date' => fake() -> dateTimeBetween('-1 year', 'now'), 
+            'creation_date' => fake() -> dateTimeBetween('-1 year', 'now'), 
             'location' => fake() -> city()
         ];
     }

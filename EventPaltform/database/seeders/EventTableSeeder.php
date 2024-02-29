@@ -10,23 +10,15 @@ use App\Models\User;
 
 class EventTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
-        Event :: factory()
-              -> count(25)
-              -> make()
-              -> each(function($event){
-
-                $user = User :: inRandomOrder() -> first();
-
-                $event -> user() -> associate($user);
-                $event -> save();
-
-              });
-    }
+  /**
+   * Run the database seeds.
+   *
+   * @return void
+   */
+  public function run()
+  {
+    Event::factory()
+      ->count(25)
+      ->create();
+  }
 }

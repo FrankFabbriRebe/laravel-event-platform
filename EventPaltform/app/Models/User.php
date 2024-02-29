@@ -18,9 +18,10 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    public function events(){
+    public function event()
+    {
 
-        return $this -> hasMany(Event :: class);
+        return $this->belongsTo(Event::class);
 
     }
     protected $fillable = [
@@ -47,6 +48,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
+
 
 }

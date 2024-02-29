@@ -18,7 +18,7 @@ class TagFactory extends Factory
     {
         return [
 
-            'name' => fake() -> words(3, true),
+            'name' => fake() -> randomElement(['Party', 'Hangower', 'Rave', 'NightAndDay', 'Crew', 'Brotherhood']),
             'description' => fake() -> paragraph() 
 
         ];

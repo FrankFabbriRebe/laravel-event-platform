@@ -5,7 +5,7 @@
 
 <div class="container">
 
-    <form method="POST">
+    <form  action="{{ route('users.store') }}" method="POST">
 
     @csrf
     @method('POST')

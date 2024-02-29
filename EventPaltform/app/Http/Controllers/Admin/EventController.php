@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Tag;
 use App\Models\Event;
+use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 
 class EventController extends Controller
 {
@@ -33,6 +34,28 @@ class EventController extends Controller
         $tags = Tag::all();
 
         return view('pages.create', compact("tags"));
+    }
+
+    public function store(Request $request)
+    {
+
+        $data = $request->all();
+
+        $tag = Tag::find($data['tag_id']);
+
+        $newEvent = new Event();
+
+        $newEvent->name = $data['name'];
+        $newEvent->description = $data['description'];
+        $newEvent->date = $data['date'];
+        $newEvent->location = $data['location'];
+
+        $newEvent->save();
+
+        $newEvent->tags()->attach($data['tag_id']);
+
+        return redirect()->route('users.index');
+
     }
 
 }

@@ -17,8 +17,8 @@ return new class extends Migration {
 
             $table->string('name', 64);
             $table->text('description')->nullable();
-            $table->date('date');
-            $table->string('location')->required();
+            $table->date('creation_date');
+            $table->string('location');
 
             $table->timestamps();
         });

@@ -5,7 +5,7 @@
 
 <div class="container">
 
-    <form method="POST">
+    <form  action="{{ route('users.store') }}" method="POST">
 
     @csrf
     @method('POST')
@@ -20,8 +20,8 @@
 
     <br>
 
-    <label for="date">Event's date</label>
-    <input type="text" name="date" id="date">
+    <label for="creation_date">Event's date</label>
+    <input type="date" name="creation_date" id="creation_date">
 
     <br>
 
@@ -30,10 +30,32 @@
 
     <br>
 
-    <label for="name">Event's name</label>
-    <input type="text" name="name" id="name">
+    <label for="tag_id">Event's tag</label>
+    <select name="tag_id" id="tag_id">
+    @foreach ($tags as $tag)
+    <option value="{{$tag->id}}">{{ $tag->name }}</option>
+    @endforeach
+    </select>
 
     <br>
+
+    @foreach ($users as $user)
+    <input
+        type="checkbox"
+        name="user_id[]"
+        id="{{ 'user-' . $user->id }}"
+        value="{{ $user->id }}"
+    >
+    <label
+        for="{{ 'user-' . $user->id  }}">
+        {{ $user->name }}
+    </label>
+    <br>
+    @endforeach
+
+    <br>
+
+    <input type="submit" value="CREATE">
 
     </form>
 

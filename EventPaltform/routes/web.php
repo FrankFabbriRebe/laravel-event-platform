@@ -21,8 +21,10 @@ Route::get('/', [EventController::class, 'index'])->name('event.index');
 Route::get('/dashboard', [EventController :: class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/events/{id}', [EventController::class, 'show'])->name('users.show');
     Route::get('/create', [EventController::class, 'create'])->name('users.create');
+    Route::post('/', [EventController::class, 'store'])->name('users.store');
+    Route::get('/events/{id}', [EventController::class, 'show'])->name('users.show');
+
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

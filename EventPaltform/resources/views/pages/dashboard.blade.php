@@ -2,7 +2,10 @@
 
 @section('content')
 <h1 class="text-center">Events {{count($events)}}</h1>
+
 <div class="container">
+    <!-- link to get create page -->
+<a href="{{route('users.create')}}">Click here to add a new event</a>
     <div class="row">
         @foreach ($events as $event)
             <div class="col-sm-12 col-md-6 col-xl-3 p-3">

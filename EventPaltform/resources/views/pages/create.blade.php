@@ -26,25 +26,10 @@
                 <input type="text" name="location" id="location">
             </div>
             <div class="col-sm-12 col-md-4 col-xl-3">
-                <label for="tag_id">Select tag name</label>
-                <select name="tag_id" id="tag_id">
-                    @foreach ($tags as $tag)
-                        <option value="{{$tag->id}}">{{$tag->name}}</option>
-                    @endforeach
-                </select>
+                
             </div>
             <div class="col-sm-12 col-md-4 col-xl-3">
-                <label>Users</label>
-                <br>
-                @foreach ($users as $user)
-                    <input type="checkbox" 
-                           name="user_id[]" 
-                           id="{{ 'user_id_' . $user->id }}"
-                           value="{{ $user->id }}">
-            <label for="{{ 'user_id_' . $user->id }}">
-                {{ $user->name }}
-            </label><br>
-                @endforeach
+                
             </div>
         </div>
         <input onclick="return confirm('Fields data are correct?')" class="btn btn-primary my-3" type="submit" value="Create">

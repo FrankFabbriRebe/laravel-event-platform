@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 
 use App\Models\Event;
 use App\Models\User;
+use App\Models\Tag;
 
 class EventTableSeeder extends Seeder
 {
@@ -27,6 +28,9 @@ class EventTableSeeder extends Seeder
         $event -> user() -> associate($user);
 
         $event -> save();
+        
+        $tags = Tag :: inRandomOrder() -> take(3) -> get();
+        $event -> tags() -> attach($tags);
       });
   }
 }

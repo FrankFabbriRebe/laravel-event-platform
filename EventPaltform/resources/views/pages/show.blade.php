@@ -9,6 +9,7 @@
             <li><strong>Event's date: </strong>{{$event->date}}</li>
             <li><strong>Description: </strong>{{$event->description}}</li>
             <li><strong>Location: </strong>{{$event->location}}</li>
+            <li><strong>User: </strong>{{$event -> user -> name}}</li>
         </ul>
         <ul>
             @foreach ($event->tags as $tag)

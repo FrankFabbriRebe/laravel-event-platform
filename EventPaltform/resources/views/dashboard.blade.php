@@ -25,7 +25,10 @@
                                 <button class="btn btn-primary"><a class="text-white" href=""><i class="fa-solid fa-pencil"></i> Edit</a></button>
                             </div>
                             <div class="col">
-                                <form action="">
+                                <form action="{{ route('users.delete', $event->id) }}"  method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                >
                                     <input class="btn btn-danger" type="submit" value="Delete">
                                 </form>
                             </div>

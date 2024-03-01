@@ -22,7 +22,7 @@ Route::get('/dashboard', [EventController :: class, 'index'])->middleware(['auth
 
 Route::middleware('auth')->group(function () {
     Route::get('/create', [EventController::class, 'create'])->name('users.create');
-    Route::post('/', [EventController::class, 'store'])->name('event.store');
+    Route::post('/events', [EventController::class, 'store'])->name('event.store');
     Route::get('/events/{id}', [EventController::class, 'show'])->name('users.show');
 
 

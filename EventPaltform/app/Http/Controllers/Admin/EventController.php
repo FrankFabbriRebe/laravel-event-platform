@@ -41,25 +41,19 @@ class EventController extends Controller
     public function store(Request $request)
     {
         $data = $request -> all();
-
-        $tag = Tag :: find($data['tag_id']);
-
-        $event = new Event();
+        
+        $event = new Event;
 
         $event -> name = $data['name'];
-        $event -> description = $data['description'];
         $event -> creation_date = $data['creation_date'];
         $event -> location = $data['location'];
-
-        $event -> tag() -> associate($tag);
+        $event -> description = $data['description'];
 
         $event -> save();
 
-        $event -> users() -> attach($data['user_id']);
-
-        return redirect()->route('dashboard');
+        $event -> tags() -> attach($data['tags']);
         
-
+        return redirect() -> route('pages.show', $event -> id);
     }
 
 }

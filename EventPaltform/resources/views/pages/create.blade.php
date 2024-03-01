@@ -9,26 +9,32 @@
        @method('POST')
     <div class="container border p-3">
         <div class="row">
-            <div class="col-sm-12 col-md-4 col-xl-3">
-                <label for="name">Event's name</label>
+            <div class="col-sm-12 col-md-12 col-xl-3">
+                <label for="name">Event's name</label><br>
                 <input type="text" name="name" id="name">
             </div>
-            <div class="col-sm-12 col-md-4 col-xl-3">
-                <label for="description">Description</label>
-                <input type="text" name="description" id="description">
+            <div class="col-sm-12 col-md-12 col-xl-3">
+                <label for="description">Description</label><br>
+                <textarea name="description" id="" cols="30" rows="10"></textarea>
             </div>
-            <div class="col-sm-12 col-md-4 col-xl-3">
-                <label for="creation_date">Creation date</label>
+            <div class="col-sm-12 col-md-12 col-xl-3">
+                <label for="creation_date">Creation date</label><br>
                 <input type="date" name="creation_date" id="creation_date">
             </div>
-            <div class="col-sm-12 col-md-4 col-xl-3">
-                <label for="location">Location</label>
+            <div class="col-sm-12 col-md-12 col-xl-3">
+                <label for="location">Location</label><br>
                 <input type="text" name="location" id="location">
             </div>
-            <div class="col-sm-12 col-md-4 col-xl-3">
-                
+            <div class="col-sm-12 col-md-12 col-xl-3">
+                <label for="tags">Tags</label><br>
+                @foreach ($tags as $tag)
+                    <div>
+                        <input type="checkbox" name="tags[]" value="{{$tag ->id}}" id="tag{{ $tag->id}}">
+                        <label for="tag{{$tag ->id}}">{{$tag -> name}}</label>
+                    </div>
+                @endforeach
             </div>
-            <div class="col-sm-12 col-md-4 col-xl-3">
+            <div class="col-sm-12 col-md-12 col-xl-3">
                 
             </div>
         </div>

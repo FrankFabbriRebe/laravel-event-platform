@@ -21,8 +21,8 @@
                     </a>
                     @auth
                         <div class="row">
-                            <div class="col">
-                                <button class="btn btn-primary"><a class="text-white" href=""><i class="fa-solid fa-pencil"></i> Edit</a></button>
+                            <div class="col">           
+                                <button class="btn btn-primary"><a class="text-white" href="{{ route('users.edit', $event->id) }}"><i class="fa-solid fa-pencil"></i> Edit</a></button>
                             </div>
                             <div class="col">
                                 <form action="">

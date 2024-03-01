@@ -40,20 +40,56 @@ class EventController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request -> all();
-        
-        $event = new Event;
+        $data = $request->all();
 
-        $event -> name = $data['name'];
-        $event -> creation_date = $data['creation_date'];
-        $event -> location = $data['location'];
-        $event -> description = $data['description'];
+        $tag = Tag::find($data['tag_id']);
 
-        $event -> save();
+        $event = new Event();
 
-        $event -> tags() -> attach($data['tags']);
-        
-        return redirect() -> route('pages.show', $event -> id);
+        $event->name = $data['name'];
+        $event->description = $data['description'];
+        $event->creation_date = $data['creation_date'];
+        $event->location = $data['location'];
+
+        $event->save();
+
+        $event->tags()->attach($data['tag_id']);
+
+        $event->users()->attach($data['user_id']);
+
+        return redirect()->route('dashboard');
+
+
+    }
+
+    public function edit($id)
+    {
+
+        $event = Event::find($id);
+        $tags = Tag::all();
+
+        return view('pages.edit', compact('event', 'tags'));
+
+    }
+
+    public function update(Request $request, $id)
+    {
+        $data = $request->all();
+
+        $tags = Tag::find($data['tag_id']);
+
+        $event = Event::find($id);
+
+        $event->name = $data['name'];
+        $event->description = $data['description'];
+        $event->creation_date = $data['creation_date'];
+        $event->location = $data['location'];
+
+        $event->save();
+
+        $event->tags()->sync($data['tag_id']);
+
+        return redirect()->route('users.show', $event->id);
     }
 
 }

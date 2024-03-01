@@ -100,7 +100,7 @@ class EventController extends Controller
 
         $event->delete();
 
-        return redirect()->route('users.delete');
+        return redirect()->route('dashboard');
     }
 
 }

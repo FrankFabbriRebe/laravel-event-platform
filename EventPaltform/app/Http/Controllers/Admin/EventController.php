@@ -51,11 +51,11 @@ class EventController extends Controller
         $event->creation_date = $data['creation_date'];
         $event->location = $data['location'];
 
-        $event->tag()->associate($tag);
-
         $event->save();
 
-        $event->users()->attach($data['user_id']);
+        $event->tags()->attach($data['tag_id']);
+
+        // $event->users()->attach($data['user_id']);
 
         return redirect()->route('dashboard');
 
@@ -70,6 +70,26 @@ class EventController extends Controller
 
         return view('pages.edit', compact('event', 'tags'));
 
+    }
+
+    public function update(Request $request, $id)
+    {
+        $data = $request->all();
+
+        $tags = Tag::find($data['tag_id']);
+
+        $event = Event::find($id);
+
+        $event->name = $data['name'];
+        $event->description = $data['description'];
+        $event->creation_date = $data['creation_date'];
+        $event->location = $data['location'];
+
+        $event->save();
+
+        $event->tags()->sync($data['tag_id']);
+
+        return redirect()->route('users.show', $event->id);
     }
 
 }

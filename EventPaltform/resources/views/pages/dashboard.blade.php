@@ -20,18 +20,20 @@
                         </p>
                     </a>
                     @auth
-                        <div class="row">
-                            <div class="col">           
-                                <button class="btn btn-primary"><a class="text-white" href="{{ route('users.edit', $event->id) }}"><i class="fa-solid fa-pencil"></i> Edit</a></button>
-                            </div>
-                            <div class="col">
-                                <form action="{{ route('events.destroy', $event->id) }}"  method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <input class="btn btn-danger" type="submit" value="Delete">
-                                </form>
-                            </div>
+                    @if (auth()->user()-> id == $event->user_id)
+                    <div class="row">
+                        <div class="col">           
+                            <button class="btn btn-primary"><a class="text-white" href="{{ route('users.edit', $event->id) }}"><i class="fa-solid fa-pencil"></i> Edit</a></button>
                         </div>
+                        <div class="col">
+                            <form action="{{ route('events.destroy', $event->id) }}"  method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <input class="btn btn-danger" type="submit" value="Delete">
+                            </form>
+                        </div>
+                    </div>
+                    @endif
                     @endauth
                 </div>
             </div>

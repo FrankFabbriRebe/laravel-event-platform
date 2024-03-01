@@ -15,12 +15,11 @@ class EventController extends Controller
 {
     public function index()
     {
-
+        
         $events = Event::all();
         $tags = Tag::all();
-        $users = User::all();
 
-        return view('pages.dashboard', compact('users', 'tags', 'events'));
+        return view('pages.dashboard', compact('tags', 'events'));
     }
     public function show($id)
     {

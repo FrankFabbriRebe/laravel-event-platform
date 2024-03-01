@@ -48,7 +48,7 @@
             
 
         </div>
-        <input onclick="return confirm('Fields data are correct?')" class="btn btn-primary my-3" type="submit" value="Create">
+        <input onclick="return confirm('Fields data are correct?')" class="btn btn-primary my-3" type="submit" value="Update">
     </div>
  </form>
 

@@ -45,6 +45,7 @@ class EventController extends Controller
         $data = $request->all();
         $user = $request->user();
 
+
         $event = new Event();
 
         $event->name = $data['name'];
@@ -53,13 +54,13 @@ class EventController extends Controller
         $event->location = $data['location'];
 
         $event->user()->associate($user);
-        dd($event);
+        
         $event->save();
 
         $event->tags()->attach($data['tag_id']);
 
 
-        return redirect()->route('dashboard');
+        return redirect()->route('users.show', $event->id);
 
 
     }

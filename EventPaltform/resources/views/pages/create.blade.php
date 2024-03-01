@@ -26,7 +26,7 @@
                 <input type="text" name="location" id="location">
             </div>
             <div class="col-sm-12 col-md-12 col-xl-3">
-                <label>Tags </label><br>
+                <label for="tag_id">Tags</label><br>
                 @foreach ($tags as $tag)
                     <div>
                         <input type="checkbox" name="tag_id[]" value="{{$tag ->id}}" id="{{'tag_id_' . $tag ->id}}">

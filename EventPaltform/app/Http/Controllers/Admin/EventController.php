@@ -34,15 +34,16 @@ class EventController extends Controller
 
         $tags = Tag::all();
         $users = User::all();
+        $events = Event:: all();
 
-        return view('pages.create', compact("tags", "users"));
+        return view('pages.create', compact("tags", "users", "events"));
     }
 
     public function store(Request $request)
     {
+        
         $data = $request->all();
-
-        $tag = Tag::find($data['tag_id']);
+        $user = $request->user();
 
         $event = new Event();
 
@@ -51,11 +52,12 @@ class EventController extends Controller
         $event->creation_date = $data['creation_date'];
         $event->location = $data['location'];
 
+        $event->user()->associate($user);
+        dd($event);
         $event->save();
 
         $event->tags()->attach($data['tag_id']);
 
-        $event->users()->attach($data['user_id']);
 
         return redirect()->route('dashboard');
 

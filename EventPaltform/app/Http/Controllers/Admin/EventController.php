@@ -66,8 +66,9 @@ class EventController extends Controller
     {
 
         $event = Event::find($id);
+        $tags = Tag::all();
 
-        return view('pages.edit', compact('event'));
+        return view('pages.edit', compact('event', 'tags'));
 
     }
 

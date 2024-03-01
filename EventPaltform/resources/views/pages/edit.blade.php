@@ -5,9 +5,10 @@
 <h1>Edit event</h1>
 
 <form
+       action="{{ route('users.update', $event->id) }}"
        method="POST">
        @csrf
-       @method('POST')
+       @method('PATCH')
 
     <div class="container border p-3">
         <div class="row">

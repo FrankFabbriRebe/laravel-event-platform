@@ -26,6 +26,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/events/{id}', [EventController::class, 'show'])->name('users.show');
     Route::get('/{id}/edit', [EventController::class, 'edit'])->name('users.edit');
     Route::patch('/{id}', [EventController::class, 'update'])->name('users.update');
+    Route::delete('/{id}', [EventController::class, 'delete'])->name('users.delete');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

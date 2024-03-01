@@ -92,4 +92,15 @@ class EventController extends Controller
         return redirect()->route('users.show', $event->id);
     }
 
+    public function destroy($id)
+    {
+        $event = Event::find($id);
+
+        $event->tags()->detach();
+
+        $event->delete();
+
+        return redirect()->route('users.delete');
+    }
+
 }

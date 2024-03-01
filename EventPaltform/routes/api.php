@@ -7,4 +7,6 @@ use App\Http\Controllers\Api\ApiController;
 
 Route :: group (['prefix' => '/v1'], function() {
     Route :: get('test', [ApiController :: class, 'getTest']);
+    Route :: get('events', [ApiController :: class, 'getEvents']);
+
 });

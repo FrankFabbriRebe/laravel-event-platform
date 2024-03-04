@@ -1,13 +1,18 @@
 <template>
-    <h1>Events</h1>
-    <ul>
+    <h1>Events:</h1>
+    <div v-if="selectedEvent != null">
+        <h4>Event name: {{ selectedEvent.name }}</h4>
+        <h4>Event description: <br><br> {{ selectedEvent.description }}</h4>
+        <h4>Event location: {{ selectedEvent.location }}</h4>
+        <button>
+            <a href="/">Back to Events</a>
+        </button>
+    </div>
+    <ul v-else>
         <li v-for="event in events" :key="event.id">
-            <h4>{{ event.name }}</h4>
-            <p><strong>Description: </strong>{{ event.description }}</p>
-            <span><strong>Event date: </strong>{{ event.creation_date }}</span>
-            <span><strong> Location: </strong>{{ event.location }}</span>
-            <h4><strong>UserId: </strong>{{ event.user_id }}</h4>
-
+            <a href="#" @click="selectedEvent = event">
+                <h4>{{ event.name }}</h4>
+            </a>
         </li>
     </ul>
 </template>
@@ -18,7 +23,8 @@ export default {
     name: 'PageEvents',
     data(){
         return{
-            events: []
+            events: [],
+            selectedEvent: null,
         }
     },
     mounted(){
@@ -37,3 +43,15 @@ export default {
     }
 }
 </script>
+<style>
+ul{
+    list-style: none;
+}
+a{
+    color: white;
+}
+a:hover{
+    color: grey;
+}
+
+</style>

@@ -3,7 +3,6 @@ import PageEvents from './components/PageEvents.vue'
 </script>
 
 <template>
-  <h1>hello word</h1>
   <PageEvents />
 </template>
 

@@ -3,7 +3,7 @@ import PageEvents from './components/PageEvents.vue'
 </script>
 
 <template>
-  <PageEvents />
+  
 </template>
 
 <style scoped>
